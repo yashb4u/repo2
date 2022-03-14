@@ -1,6 +1,5 @@
 package Resources;
 
-import java.io.File;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -23,7 +22,8 @@ public class ExtentReportListener implements IReporter {
 	private ExtentReports extent;
 
 	public void generateReport(List<XmlSuite> xmlSuites, List<ISuite> suites, String outputDirectory) {
-		extent = new ExtentReports(outputDirectory + File.separator + "./report/Extent.html", true);
+		String dir = System.getProperty("user.dir");
+		extent = new ExtentReports(dir+"//test-output//report//Extent.html", true);
 
 		for (ISuite suite : suites) {
 			Map<String, ISuiteResult> result = suite.getResults();
